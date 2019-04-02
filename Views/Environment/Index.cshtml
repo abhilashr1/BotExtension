@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    var vals = Environment.GetEnvironmentVariables();
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h1>Environment Variables</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        
+        <table>
+            @foreach (System.Collections.DictionaryEntry ele in vals)
+            {
+            <tr>
+                <td>@ele.Key</td>
+                <td>@ele.Value</td>
+            </tr>
+            }
+        </table>
+    </div>
+</div>

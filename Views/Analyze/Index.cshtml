@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "Bot Statistics";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <h2>Statistics</h2>
+        <br />
+        <ul>
+            <li>Average Response time - @ViewData["averageResponse"].ToString()</li>
+            <li>
+                Timeouts - <br />
+                @foreach (var ele in ViewData["timeouts"] as List<string>)
+                {
+                    @ele
+                    <br />
+                }
+            </li>
+            <li>
+                Non 200 Status Codes - <br />
+                @foreach (var ele in ViewData["non200s"] as List<string>)
+                {
+                    @ele
+                    <br />
+                }
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <h2>Web Server Logs of Bot</h2>
+        <table>
+            @foreach (var ele in ViewData["log"] as List<string>)
+            {
+                <tr>
+                    <td>@ele</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

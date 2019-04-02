@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <h1>Bot Performance Extension</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+
+        <h3>Microsoft Keys</h3>
+        <hr />
+        <ul>
+            <li><b>MicrosoftAppID</b> - <span id="msappId">@ViewBag.MicrosoftAppID</span></li>
+            <li><b>MicrosoftAppPassword</b> - <span id="mspasswd">@ViewBag.MicrosoftAppPassword</span></li>
+
+        </ul>
+        <div id="mstest">
+            <a href="" id="mstestbtn" class="btn btn-danger">Test Microsoft Keys</a>
+            <div id="msresult"></div>
+        </div>
+
+        <h3>LUIS Keys</h3>
+        <hr />
+        <ul>
+            <li><b>LuisAppID</b> - <span id="luisappId">@ViewBag.LUISAppID</span></li>
+            <li><b>LUIS Key</b> - <span id="luiskey">@ViewBag.LUISKey</span></li>
+            <li><b>LUIS Hostname</b> - <span id="luishostname">@ViewBag.LUISHostname</span></li>
+        </ul>
+        <div id="luistest">
+            <a href="" id="luistestbtn" class="btn btn-danger">Test LUIS Keys</a>
+            <div>
+                <br />
+                <input id="luistextbox" class="" style="width:400px;" /><a href="#" id="luismsgbutton" class="btn btn-default">Test Query</a>
+            </div>
+            <div id="luisresult"></div>
+        </div>
+
+
+        <h3>QnaMaker Keys</h3>
+        <hr />
+        <ul>
+            <li><b>QnaKnowledgebaseID</b> -<span id="qnaappId"> @ViewBag.QnaKnowledgebaseID</span></li>
+            <li><b>QnA Key</b> - <span id="qnakey">@ViewBag.QnaKey</span></li>
+            <li><b>QnA Hostname</b> - <span id="qnahostname">@ViewBag.QnaHostname</span></li>
+        </ul>
+
+        <div id="qnatest">
+            <a href="" id="qnatestbtn" class="btn btn-danger">Test QnA Keys</a>
+            <div>
+                <br />
+                <input id="qnatextbox" class="" style="width:400px;" /><a href="#" id="qnamsgbutton" class="btn btn-default">Test Query</a>
+            </div>
+            <div id="qnaresult"></div>
+        </div>
+
+    </div>
+</div>

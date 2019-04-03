@@ -3,25 +3,19 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using BotExtension.Models;
 using BotExtension.Helper;
-using System.Xml;
-using Newtonsoft.Json;
-using System.Security.Cryptography;
-using System.Text;
-using Newtonsoft.Json.Linq;
+using Microsoft.AspNetCore.Mvc;
 
 namespace BotExtension.Controllers
 {
-    public class HomeController : Controller
+    public class TestKeysController : Controller
     {
         public IActionResult Index()
         {
             try
             {
                 Tuple<string, string> MicrosoftKeys = FetchIDKeys.GetMicrosoftKeys();
-                Tuple<string, string,string> LUISKeys= FetchIDKeys.GetLuisKeys();
+                Tuple<string, string, string> LUISKeys = FetchIDKeys.GetLuisKeys();
                 Tuple<string, string, string> QnaKeys = FetchIDKeys.GetQnaKeys();
 
                 ViewBag.MicrosoftAppID = MicrosoftKeys.Item1;
@@ -36,30 +30,11 @@ namespace BotExtension.Controllers
                 ViewBag.QnaHostname = QnaKeys.Item3;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Trace.Write(ex.ToString());
-                throw;
             }
             return View();
-        }
-
-        public IActionResult Sink()
-        {
-            Response.StatusCode = 200;
-            return new EmptyResult();
-        }
-
-        public IActionResult About()
-        {
-            return View();
-        }
-
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

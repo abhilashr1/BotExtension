@@ -30,9 +30,12 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Environment" asp-action="Index">Environment</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Analyze" asp-action="Index">Analyze</a></li>
+                    <li><a asp-area="" asp-controller="TestKeys" asp-action="Index">Keys</a></li>
+                    <li><a asp-area="" asp-controller="ApplicationLogs" asp-action="Index">AppLogs</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+
                 </ul>
             </div>
         </div>
@@ -44,7 +47,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2019 - BotExtension</p>
+            <p>&copy; BotExtension | Report bugs and request features  <a href="mailto:Abhilash.Rejanair@microsoft.com">here</a>.</p>
         </footer>
     </div>
 

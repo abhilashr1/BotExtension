@@ -3,42 +3,75 @@
     ViewData["Title"] = "Bot Statistics";
 }
 
+@if (ViewData.ContainsKey("exception"))
+{
+    <div class="row">
+    <div class="col-xs-12">
+
+            <h2>An error occured.</h2>
+            <br />
+            <p>Sorry, looks like an error occured while trying to analyze. This mostly happens when you do not 
+        have the Web Server Logging enabled on the file system. </p> <br />
+        <p>You can enable web server logging by enabling it in Diagnostic Tools</p>
+        <img src="~/images/enable_web_server_logs.png" alt="Enable Web Server Logging" />
+        <p> More Information - @ViewData["exception"]</p>
+        </div>
+        </div>
+}
+else
+{
 <div class="row">
     <div class="col-xs-12">
         <h2>Statistics</h2>
         <br />
-        <ul>
-            <li>Average Response time - @ViewData["averageResponse"].ToString()</li>
-            <li>
-                Timeouts - <br />
+        <div id="avgrespdiv">
+            @{
+                double avgResp = (double)ViewData["averageResponse"];
+            }
+            <h2>Bot's Average Response time</h2>
+            <br />
+            <h4>@avgResp.ToString("0.00") seconds</h4>
+        </div>
+
+        <div id="logsdiv">
+            <h2>Instances of timeouts</h2>
+            <p>Bot response > 15 seconds</p> <br />
+            <div class="logview">
+
                 @foreach (var ele in ViewData["timeouts"] as List<string>)
                 {
                     @ele
                     <br />
                 }
-            </li>
-            <li>
-                Non 200 Status Codes - <br />
-                @foreach (var ele in ViewData["non200s"] as List<string>)
-                {
-                    @ele
-                    <br />
-                }
-            </li>
-        </ul>
-    </div>
+                </div>
+            </div>
+
+            <div id="logsdiv">
+                <h2>Instances of Errors</h2>
+                <p>Request where the response is not >200</p> <br />
+                <div class="logview">
+
+                    @foreach (var ele in ViewData["non200s"] as List<string>)
+                    {
+                        @ele
+                        <br /> <br />
+                    }
+                </div>
+            </div>
+
+            <div id="logsdiv">
+                <h2>Complete Web Server Logs of Bot</h2>
+                <p>All the POST requests to the bot endpoint</p> <br />
+                <div class="logview">
+                    @foreach (var ele in ViewData["log"] as List<string>)
+                    {
+
+                        @ele
+                        <br /> <br />
+                    }
+                </div>
+            </div>
+        </div>
 </div>
 
-<div class="row">
-    <div class="col-xs-12">
-        <h2>Web Server Logs of Bot</h2>
-        <table>
-            @foreach (var ele in ViewData["log"] as List<string>)
-            {
-                <tr>
-                    <td>@ele</td>
-                </tr>
-            }
-        </table>
-    </div>
-</div>
+}
